@@ -1,9 +1,9 @@
 {
-  "name": "ananda.uz",
+  "name": "esho.uz",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "index.mjs",
   "scripts": {
-    "start": "node index.js",
+    "start": "node index.mjs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -11,6 +11,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "ejs": "^3.1.10",
     "express": "^5.1.0"
   }
 }
