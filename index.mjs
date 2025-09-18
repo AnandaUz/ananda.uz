@@ -21,6 +21,9 @@ app.get("/", (req, res) => {
 app.get("/mastermaind", (req, res) => {
     res.render("mastermaind", { title: "| Мастермайнд" });
 });
+app.get("/coaching", (req, res) => {
+    res.render("coaching", { title: "| Коучинг" });
+});
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);

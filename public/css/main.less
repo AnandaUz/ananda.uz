@@ -5,6 +5,7 @@
   box-sizing: border-box;
 }
 
+
 /* Базовые настройки */
 html {
   font-size: 16px;
@@ -26,7 +27,7 @@ body {
 .container {
   width: 100%;
   max-width: 500px;
-  min-width: 420px;
+
   margin: 0 auto;
   .set_image("bgmain.jpg");
   background-repeat: no-repeat;
@@ -70,18 +71,20 @@ section {
 .set_image(@url) {
   background-image: data-uri("../images/@{url}");
 }
-.top {
-  position: relative;
-  &.main {
+&.main {
+  .top {
+    position: relative;
     .set_image("photo.png");
     height: 315px;
     margin: 0 0 -55px;
+  }
 
-    .cont {
-      margin: -20px 0 0 ;
-    }
+
+  .cont {
+    margin: -75px 0 0 ;
   }
 }
+
 .cont {
   padding: 0 20px 40px;
 }
@@ -106,22 +109,22 @@ section {
 
     &.i {
       color: rgba(0, 46, 80, 0.96);
-      padding-left: 18px;
+      padding-left: 0;
       font-size: 24px;
-      padding-top: 4px;
+      padding-top: 0px;
     }
 
   }
 }
 .name {
-  background: rgba(255, 68, 0, 0.5);
+  background: rgba(255, 68, 0, 0.65);
   height: 37px;
   color: #fffe;
-  font-size: 30px;
+  font-size: 27px;
   position: absolute;
-  top: 195px;
+  top: 200px;
   right: 0;
-  padding: 0 10px;
+  padding: 4px 8px;
 }
 h3 {
   font-size: 23px;
@@ -145,11 +148,13 @@ footer {
   background: rgba(255, 68, 0, 0.75);
   color: #fffe;
   margin: 0 -20px 20px;
-  font-size: 22px;
+  font-size: 24px;
   padding: 4px 0 0 47px;
-  transition: background 0.2s ease;
+  transition: background 0.2s
+  ease;
   max-width: 375px;
   box-sizing: content-box;
+  line-height: 34px;
 
   &:hover {
     background: rgba(255, 68, 0, 1);
@@ -161,7 +166,7 @@ footer {
   &:before {
     content: "";
     position: absolute;
-    top: 2px;
+    top: 6px;
     left: 16px;
     .set_image("str.png");
     width:335px;
@@ -216,10 +221,17 @@ footer {
     margin-top: 8px;
     font-size: 24px;
   }
+  &.ex3 {
+    font-size: 23px;
+    line-height: 20px;
+    height: 55px;
+    margin-top: 10px;
+    margin-bottom: 0;
+  }
 }
 h1 {
   color: rgba(255, 68, 0, 0.75);
-  font-size: 29px;
+  font-size: 28px;
   text-align: center;
 
   line-height: 35px;
@@ -233,7 +245,7 @@ h1 {
 
     width: 80%;
     height: 1px;
-    bottom: 0;
+    bottom: 1px;
     left: -20px;
     background: rgba(89, 0, 0, 0.35);
   }
