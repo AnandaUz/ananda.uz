@@ -15,7 +15,11 @@ app.set("views", path.join(__dirname, "views"));
 app.use(express.static("public"));
 
 app.get("/", (req, res) => {
-    res.render("index", { title: "Привет с Vercel + ESM!" });
+    res.render("index", { title: "" });
+});
+
+app.get("/mastermaind", (req, res) => {
+    res.render("mastermaind", { title: "| Мастермайнд" });
 });
 
 app.listen(port, () => {

@@ -14,10 +14,11 @@ html {
 body {
   font-family: 'Montserrat', sans-serif;
   font-weight: 400; /* обычный */
-  line-height: 1.5;
-  color: #222;
+  line-height: 1.2;
+  color: rgba(88, 21, 0, 0.8);
   background: #fff ;
   .set_image("bg.png");
+  font-size: 18px;
 
 }
 
@@ -75,14 +76,22 @@ section {
     .set_image("photo.png");
     height: 315px;
     margin: 0 0 -55px;
+
+    .cont {
+      margin: -20px 0 0 ;
+    }
   }
+}
+.cont {
+  padding: 0 20px 40px;
 }
 
 .b00 {
-  color: #401300;
+  color: rgba(64, 19, 0, 0.75);
   font-size: 19px;
   text-align: center;
   height: 25px;
+  line-height: 19px;
 
 }
 .b01 {
@@ -106,19 +115,20 @@ section {
 }
 .name {
   background: rgba(255, 68, 0, 0.5);
-  height: 45px;
+  height: 37px;
   color: #fffe;
   font-size: 30px;
   position: absolute;
   top: 195px;
   right: 0;
-  padding: 0 20px;
+  padding: 0 10px;
 }
 h3 {
   font-size: 23px;
   font-weight: normal;
   margin: 0;
-  padding: 0 0 12px;
+  padding: 20px 0 10px;
+  color: rgba(0, 46, 80, 0.95);
 }
 footer {
   padding: 10px 0 5px;
@@ -126,21 +136,21 @@ footer {
   color: #656565;
 
 }
-.cont {
-  padding: 0 20px 40px;
-  margin: -20px 0 0 ;
-}
+
 .bA {
   position: relative;
   display: block;
   height: 40px;
-  width: 440px;
+  width: 96%;
   background: rgba(255, 68, 0, 0.75);
   color: #fffe;
   margin: 0 -20px 20px;
   font-size: 22px;
   padding: 4px 0 0 47px;
   transition: background 0.2s ease;
+  max-width: 375px;
+  box-sizing: content-box;
+
   &:hover {
     background: rgba(255, 68, 0, 1);
 
@@ -193,6 +203,88 @@ footer {
       background: rgba(25, 131, 177, 1);
     }
   }
+  &.ex1 {
+    line-height: 20px;
+    margin-top: 8px;
 
+    span {
+      font-size: 16px;
+      color: rgba(255, 255, 255, 0.8);
+    }
+  }
+  &.ex2 {
+    margin-top: 8px;
+    font-size: 24px;
+  }
+}
+h1 {
+  color: rgba(255, 68, 0, 0.75);
+  font-size: 29px;
+  text-align: center;
+
+  line-height: 35px;
+  font-weight: normal;
+  position: relative;
+
+  &:before {
+    content: "";
+    display: block;
+    position: absolute;
+
+    width: 80%;
+    height: 1px;
+    bottom: 0;
+    left: -20px;
+    background: rgba(89, 0, 0, 0.35);
+  }
+}
+.contPage {
+  .top {
+    position: relative;
+    height: 85px;
+  }
+  .name {
+    position: static;
+    float: right;
+    font-size: 22px;
+    height: 30px;
+    margin: 6px 0 0;
+    background: rgba(255, 68, 0, 0.7);
+    padding: 4px 15px;
+    &:hover {
+      background: rgba(255, 68, 0, 1);
+    }
+  }
+}
+.blM1 {
+  color: rgba(0, 46, 80, 0.95);
+  font-size: 20px;
+  text-align: center;
+  line-height: 19px;
+  padding: 0 0 15px 0;
+  div {
+    padding: 0 0 15px 0;
+  }
+}
+.blM2 {
+  text-indent: -20px;
+  padding: 0 0 0 20px;
+  p {
+    padding: 0 0 5px 0;
+  }
 
 }
+ul {
+
+  list-style-position: inside;
+
+  li {
+    padding: 0;
+
+    &::marker {
+      color: rgba(0, 46, 80, 0.95);
+      
+    }
+  }
+}
+
