@@ -1,9 +1,5 @@
 
-window.addEventListener("load", e => {
-
-
-
-});
+window.addEventListener("load", e => {});
 
 
 
