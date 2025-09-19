@@ -18,7 +18,7 @@ app.use(express.static("public"));
 app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
-    res.render("index", { title: "" });
+    res.render("index", { title: "-" });
 });
 
 app.get("/mastermind", (req, res) => {
