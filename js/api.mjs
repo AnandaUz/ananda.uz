@@ -8,14 +8,21 @@ bot.telegram.setWebhook(process.env.WEBHOOK_URL);
 
 // Логика при /start
 bot.start((ctx) => {
-    const user = ctx.from.username
-        ? `@${ctx.from.username}`
-        : `${ctx.from.first_name} ${ctx.from.last_name || ""}`;
+    let user = ''
 
+    const firstName = ctx.from.first_name || "";
+    const lastName = ctx.from.last_name || "";
+    const fullName = `${firstName} ${lastName}`.trim();
+
+    if (ctx.from.username) {
+        // Если есть ник, добавляем его
+        user = `${fullName} (@${ctx.from.username})`;
+    } else {
+        // Если ника нет — делаем кликабельную ссылку по ID
+        user = `${fullName} (tg://user?id=${ctx.from.id})`;
+    }
     // читаем параметр start
     const args = ctx.startPayload; // "mastermind" или "coaching"
-
-    console.log('> '+args)
 
     let clientMsg = "✅ Ваша заявка отправлена!";
     let adminMsg = `📩 Новая заявка от: ${user}`;
