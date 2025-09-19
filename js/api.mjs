@@ -14,31 +14,49 @@ bot.start((ctx) => {
     const lastName = ctx.from.last_name || "";
     const fullName = `${firstName} ${lastName}`.trim();
 
-    if (ctx.from.username) {
-        // Если есть ник, добавляем его
-        user = `${fullName} (@${ctx.from.username})`;
-    } else {
-        // Если ника нет — делаем кликабельную ссылку по ID
-        user = `${fullName} (tg://user?id=${ctx.from.id})`;
-    }
+
     // читаем параметр start
     const args = ctx.startPayload; // "mastermind" или "coaching"
 
     let clientMsg = "✅ Ваша заявка отправлена!";
     let adminMsg = `📩 Новая заявка от: ${user}`;
 
+    let str = ''
     if (args === "mastermind") {
-        clientMsg = "✅ Ваша заявка на мастермайнд отправлена!";
-        adminMsg = `📩 Новая заявка на МАСТЕРМАЙНД\nОт: ${user}`;
+        str = 'на МАСТЕРМАЙНД'
+
     } else if (args === "coaching") {
-        clientMsg = "✅ Ваша заявка на коуч-сессию отправлена!";
-        adminMsg = `📩 Новая заявка на КОУЧ-СЕССИЮ\nОт: ${user}`;
+        str = 'на КОУЧ-СЕССИЮ'
     }
+
+    clientMsg = `✅ Ваша заявка ${str} отправлена!`;
+
+
+    let url = ''
+    if (ctx.from.username) {
+        // Если есть ник, добавляем его
+        user = `${fullName} (@${ctx.from.username})`;
+
+        adminMsg = `📩 Новая заявка ${str}\nОт: ${user}`;
+        bot.telegram.sendMessage(process.env.ADMIN_ID, adminMsg);
+    } else {
+        bot.telegram.sendMessage(
+            process.env.ADMIN_ID,
+            `📩 Новая заявка ${str}\nОт: <a href="tg://user?id=${ctx.from.id}">${ctx.from.first_name} ${ctx.from.last_name || ""}</a>`,
+            {parse_mode: "HTML"}
+        );
+    }
+
+
 
     // сообщение клиенту
     ctx.reply(clientMsg);
     // сообщение админу
-    bot.telegram.sendMessage(process.env.ADMIN_ID, adminMsg);
+    //
+
+
+
+
 });
 
 // Обработчик вебхука для Express / Vercel
