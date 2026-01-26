@@ -1,0 +1,314 @@
+// Bootstrap functions, variables and mixins
+@import "../../node_modules/bootstrap/scss/functions";
+@import "../../node_modules/bootstrap/scss/variables";
+@import "../../node_modules/bootstrap/scss/maps";
+@import "../../node_modules/bootstrap/scss/mixins";
+@import "../../node_modules/bootstrap/scss/utilities";
+
+// Bootstrap Grid & Utilities only
+@import "../../node_modules/bootstrap/scss/bootstrap-grid";
+@import "../../node_modules/bootstrap/scss/helpers";
+@import "../../node_modules/bootstrap/scss/utilities/api";
+
+/* Сброс браузерных стилей */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+/* Базовые настройки */
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400; /* обычный */
+  line-height: 1.2;
+  color: rgba(88, 21, 0, 0.8);
+  background: #fff ;
+  @include set_image("bg.png");
+  font-size: 18px;
+
+}
+
+/* Контейнер для центровки */
+.container {
+  width: 100%;
+  max-width: 500px;
+
+  margin: 0 auto;
+  @include set_image("bgmain.jpg");
+  background-repeat: no-repeat;
+  background-position: top center;
+}
+
+/* Ссылки */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Заголовки */
+h1, h2, h3 {
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+/* Кнопка */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background: #0070f3;
+  color: #fff;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+}
+.btn:hover {
+  background: #0059c9;
+}
+
+/* Адаптивность */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+section {
+  padding: 4rem 0;
+}
+@mixin set_image($url) {
+  background-image: url("../images/#{$url}");
+}
+&.main {
+  .top {
+    position: relative;
+    @include set_image("photo.png");
+    height: 315px;
+    margin: 0 0 -55px;
+  }
+
+
+  .cont {
+    margin: -75px 0 0 ;
+  }
+}
+
+.cont {
+  padding: 0 20px 40px;
+}
+
+.b00 {
+  color: rgba(64, 19, 0, 0.75);
+  font-size: 19px;
+  text-align: center;
+  height: 25px;
+  line-height: 19px;
+
+}
+.b01 {
+  color: #862A03;
+  font-size: 20px;
+  padding: 25px 0 0 60px;
+  line-height: 19px;
+  span {
+    display: block;
+    text-indent: -40px;
+    padding: 0 0 15px 0;
+
+    &.i {
+      color: rgba(0, 46, 80, 0.96);
+      padding-left: 0;
+      font-size: 24px;
+      padding-top: 0px;
+    }
+
+  }
+}
+.name {
+  background: rgba(255, 68, 0, 0.65);
+  height: 37px;
+  color: #fffe;
+  font-size: 27px;
+  position: absolute;
+  top: 200px;
+  right: 0;
+  padding: 4px 8px;
+}
+h3 {
+  font-size: 23px;
+  font-weight: normal;
+  margin: 0;
+  padding: 20px 0 10px;
+  color: rgba(0, 46, 80, 0.95);
+}
+footer {
+  padding: 10px 0 5px;
+  text-align: center;
+  color: #656565;
+
+}
+
+.bA {
+  position: relative;
+  display: block;
+  height: 40px;
+  width: 96%;
+  background: rgba(255, 68, 0, 0.75);
+  color: #fffe;
+  margin: 0 -20px 20px;
+  font-size: 24px;
+  padding: 4px 0 0 47px;
+  transition: background 0.2s
+  ease;
+  max-width: 375px;
+  box-sizing: content-box;
+  line-height: 34px;
+
+  &:hover {
+    background: rgba(255, 68, 0, 1);
+
+    &:before {
+      left: 19px;
+    }
+  }
+  &:before {
+    content: "";
+    position: absolute;
+    top: 6px;
+    left: 16px;
+    @include set_image("str.png");
+    width:335px;
+    height: 47px;
+    transition: left 0.2s ease;
+  }
+  &.a2 {
+    background: rgba(255, 118, 94, 0.49);
+    color: rgba(105, 0, 0, 0.9);
+    &:hover {
+      background: rgba(255, 118, 94, 1);
+    }
+  }
+  &.a3 {
+    background: rgba(255, 255, 255, 0.91);
+    color: rgba(105, 0, 0, 0.9);
+    &:hover {
+      background: rgba(255, 243, 243, 0.91);
+    }
+  }
+  &.a4 {
+    background: rgba(25, 131, 177, 0.91);
+    color: rgba(255, 255, 255, 0.9);
+    &:hover {
+      background: rgba(25, 131, 177, 1);
+    }
+  }
+  &.a5 {
+    background: rgba(66, 154, 197, 0.91);
+    color: rgba(255, 255, 255, 0.9);
+    &:hover {
+      background: rgba(25, 131, 177, 1);
+    }
+  }
+  &.a6 {
+    background: rgba(90, 165, 198, 0.91);
+    color: rgba(255, 255, 255, 0.9);
+    &:hover {
+      background: rgba(25, 131, 177, 1);
+    }
+  }
+  &.ex1 {
+    line-height: 20px;
+    margin-top: 8px;
+
+    span {
+      font-size: 16px;
+      color: rgba(255, 255, 255, 0.8);
+    }
+  }
+  &.ex2 {
+    margin-top: 8px;
+    font-size: 24px;
+  }
+  &.ex3 {
+    font-size: 23px;
+    line-height: 20px;
+    height: 55px;
+    margin-top: 10px;
+    margin-bottom: 0;
+  }
+}
+h1 {
+  color: rgba(255, 68, 0, 0.75);
+  font-size: 28px;
+  text-align: center;
+
+  line-height: 35px;
+  font-weight: normal;
+  position: relative;
+
+  &:before {
+    content: "";
+    display: block;
+    position: absolute;
+
+    width: 80%;
+    height: 1px;
+    bottom: 1px;
+
+    background: rgba(89, 0, 0, 0.35);
+  }
+}
+.contPage {
+  .top {
+    position: relative;
+    height: 85px;
+  }
+  .name {
+    position: static;
+    float: right;
+    font-size: 22px;
+    height: 30px;
+    margin: 6px 0 0;
+    background: rgba(255, 68, 0, 0.7);
+    padding: 4px 15px;
+    &:hover {
+      background: rgba(255, 68, 0, 1);
+    }
+  }
+}
+.blM1 {
+  color: rgba(0, 46, 80, 0.95);
+  font-size: 20px;
+  text-align: center;
+  line-height: 19px;
+  padding: 0 0 15px 0;
+  div {
+    padding: 0 0 15px 0;
+  }
+}
+.blM2 {
+  text-indent: -20px;
+  padding: 0 0 0 20px;
+  p {
+    padding: 0 0 5px 0;
+  }
+
+}
+ul {
+
+  list-style-position: inside;
+
+  li {
+    padding: 0;
+
+    &::marker {
+      color: rgba(0, 46, 80, 0.95);
+      
+    }
+  }
+}
+

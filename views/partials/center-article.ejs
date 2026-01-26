@@ -1,0 +1,24 @@
+
+
+<div class="contPage">
+    <div class="top">
+        <div class="b00">
+            Саморазвитие • Здоровье • Бизнес
+        </div>
+
+        <a href="/" class="name">
+            АНАНДА ШАДРИН
+        </a>
+    </div>
+    <h1><%= article.title %></h1>
+    <span class="article-date">Дата: <%= article.date %></span>
+    <div class="cont">
+
+        <div class="article-content">
+            <%- include(article.contentPartial) %>
+        </div>
+
+
+
+    </div>
+</div>
