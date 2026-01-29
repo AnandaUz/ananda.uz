@@ -21,5 +21,13 @@
         "contentPartial": "articles/15_07_05_tashkent_samarkand_tashkent",
         "isArrticle": true,
         "totalPages": 5
+    },
+    {
+        "slug": "19_01_15_inogda_ya_risuyu",
+        "title": "Иногда я рисую (коллекция моих картинок)",
+        "date": "2015-07-05",
+        "contentPartial": "articles/19_01_15_inogda_ya_risuyu",
+        "isArrticle": true,
+        "totalPages": 3
     }
 ]

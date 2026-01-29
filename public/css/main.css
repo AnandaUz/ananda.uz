@@ -7905,4 +7905,22 @@ a.anh {
   text-align: center;
 }
 
+.imgWithTitle {
+  background: rgba(255, 255, 255, 0.6666666667);
+  border-radius: 5px;
+  padding: 3px;
+  margin: 0 0 10px;
+}
+
+.img_title {
+  text-align: center;
+  font-size: 18px;
+  color: var(--darkBlue);
+}
+.img_title b {
+  color: #52696c;
+  font-size: 14px;
+  font-weight: normal;
+}
+
 /*# sourceMappingURL=main.css.map */

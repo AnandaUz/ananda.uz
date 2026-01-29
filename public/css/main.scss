@@ -561,3 +561,21 @@ a.anh {
 .img_bl {
   text-align: center;
 }
+.imgWithTitle {
+  background: #fffa;
+  border-radius: 5px;
+  padding: 3px;
+  margin: 0 0 10px;
+}
+.img_title {
+  text-align: center;
+  font-size: 18px;
+  color: var(--darkBlue);
+
+
+  b {
+    color: #52696c;
+    font-size: 14px;
+    font-weight: normal;
+  }
+}
