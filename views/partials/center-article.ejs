@@ -1,24 +1,89 @@
 
 
 <div class="contPage">
-    <div class="top">
-        <div class="b00">
-            Саморазвитие • Здоровье • Бизнес
-        </div>
+    <%- include('top_in') %>
+    <h1>
+        <%
+        if (article.isTechnique) {
+        %>
+            Техника "<%= article.title %>"
+        <%
+        } else {
+        %>
+                <%= article.title %>
+            <%
+        }
 
-        <a href="/" class="name">
-            АНАНДА ШАДРИН
-        </a>
-    </div>
-    <h1><%= article.title %></h1>
-    <span class="article-date">Дата: <%= article.date %></span>
+
+        %>
+
+        </h1>
+    <span class="article-date">
+
+
+        <%= formatDate(article.date) %></span>
     <div class="cont">
 
         <div class="article-content">
-            <%- include(article.contentPartial) %>
+            <%- include(contentPartial) %>
         </div>
+
+        <% if (article.totalPages) { %>
+            <div class="pagination">
+                <% if (currentPage > 1) { %>
+                    <a href="/texts/<%= article.slug %>/<%= currentPage - 1 %>" class="prev">←</a>
+                <% } %>
+                
+                <div class="pages">
+                    <% for(let i = 1; i <= article.totalPages; i++) { %>
+                        <a href="/texts/<%= article.slug %>/<%= i %>" class="<%= i === currentPage ? 'active' : '' %>"><%= i %></a>
+                    <% } %>
+                </div>
+
+                <% if (currentPage < article.totalPages) { %>
+                    <a href="/texts/<%= article.slug %>/<%= currentPage + 1 %>" class="next">→</a>
+                <% } %>
+            </div>
+        <% } %>
 
 
 
     </div>
+
+    <div class="list_pages"><div class="cont">
+    <% if (article.isTechnique) { %>
+        <h4>Другие техники</h4>
+        <div class="list">
+            <% if (articles && articles.length > 0) { %>
+                <%
+                    let m = articles.filter( article => article.isTechnique)
+
+
+                m.forEach(article => { %>
+                    <a href="/texts/<%= article.slug %>" class="anh">
+                        <%= article.title %>
+                    </a>
+                <% }); %>
+            <% } else { %>
+                <p>Статей пока нет.</p>
+            <% } %>
+        </div>
+    <% } %>
+    <% if (article.isArrticle) { %>
+        <h4>Статьи</h4>
+        <div class="list">
+            <%
+            let m = articles.filter( article => article.isArrticle)
+            if (m && m.length > 0) { %>
+                <% m.forEach(article => { %>
+                    <a href="/texts/<%= article.slug %>" class="anh">
+                        <%= article.title %>
+                    </a>
+                <% }); %>
+            <% } else { %>
+                <p>Статей пока нет.</p>
+            <% } %>
+        </div>
+    <% } %>
+    </div></div>
 </div>

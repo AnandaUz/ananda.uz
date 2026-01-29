@@ -1,8 +1,25 @@
 [
     {
-        "slug": "semnavikov",
-        "title": "6 шагов проРаботы",
+        "slug": "ubejdeniya",
+        "title": "Трансформация убеждений",
         "date": "2026-01-26",
-        "contentPartial": "articles/semnavikov"
+        "contentPartial": "articles/ubejdeniya",
+        "isTechnique": true
+    },
+    {
+        "slug": "20180908_retrit_issyk-kul",
+        "title": "Йоговский ретрит на озере Иссык-Куль",
+        "date": "2018-09-08",
+        "contentPartial": "articles/20180908_retrit_issyk-kul",
+        "isArrticle": true,
+        "totalPages": 7
+    },
+    {
+        "slug": "15_07_05_tashkent_samarkand_tashkent",
+        "title": "Велопоездка Ташкент–Самарканд–Ташкент (612 км)",
+        "date": "2015-07-05",
+        "contentPartial": "articles/15_07_05_tashkent_samarkand_tashkent",
+        "isArrticle": true,
+        "totalPages": 5
     }
 ]
