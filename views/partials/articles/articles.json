@@ -7,10 +7,17 @@
         "isTechnique": true
     },
     {
-        "slug": "20180908_retrit_issyk-kul",
+        "slug": "shest_shagod_pro_raboti",
+        "title": "6 шагов проРаботы",
+        "date": "2026-01-29",
+        "contentPartial": "articles/shest_shagod_pro_raboti",
+        "isTechnique": true
+    },
+    {
+        "slug": "18_09_08_retrit_issyk-kul",
         "title": "Йоговский ретрит на озере Иссык-Куль",
         "date": "2018-09-08",
-        "contentPartial": "articles/20180908_retrit_issyk-kul",
+        "contentPartial": "articles/18_09_08_retrit_issyk-kul",
         "isArrticle": true,
         "totalPages": 7
     },

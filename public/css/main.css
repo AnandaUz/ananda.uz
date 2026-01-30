@@ -7729,14 +7729,14 @@ ul li::marker {
   }
 }
 
-blockquote {
+.quote-block {
   display: flex;
   justify-content: right;
   align-content: center;
   padding: 6px 0 11px;
   font-weight: bold;
 }
-blockquote .ico {
+.quote-block .ico {
   background-image: url("../images/ico_00.svg");
   background-repeat: no-repeat;
   min-width: 27px;
@@ -7744,18 +7744,21 @@ blockquote .ico {
   margin: 0 5px 0 0;
   flex-shrink: 1;
 }
-blockquote .cont {
+.quote-block .cont {
   padding: 0;
   display: flex;
   justify-content: right;
   align-content: center;
 }
-blockquote .cont * {
+.quote-block .cont * {
   text-align: right;
 }
-blockquote .cont cite {
+.quote-block .cont cite {
   font-size: 14px;
   font-weight: normal;
+}
+.quote-block .quote-text {
+  padding: 0;
 }
 
 ol {
@@ -7777,7 +7780,7 @@ ol.steps__list .title {
   display: block;
 }
 ol.steps__list .example {
-  padding: 10px 0 0 20px;
+  padding: 0px 0 10px 20px;
   color: #bb5050;
 }
 ol.steps__list > li {
@@ -7921,6 +7924,25 @@ a.anh {
   color: #52696c;
   font-size: 14px;
   font-weight: normal;
+}
+
+.list_l2 {
+  padding: 0 0 0 20px;
+}
+.list_l2 li {
+  --dx:40px;
+  padding: 0 0px 5px var(--dx);
+  text-indent: calc(var(--dx) * -1);
+}
+
+h5 {
+  font-size: 18px;
+  color: var(--darkBlue);
+  padding: 0 0 5px;
+}
+
+.darkBlue {
+  color: var(--darkBlue);
 }
 
 /*# sourceMappingURL=main.css.map */

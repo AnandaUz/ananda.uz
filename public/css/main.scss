@@ -381,7 +381,7 @@ ul {
   }
 
 }
-blockquote {
+.quote-block {
   display: flex;
   justify-content: right;
   align-content: center;
@@ -408,6 +408,9 @@ blockquote {
       font-weight: normal;
     }
   }
+  .quote-text {
+    padding: 0;
+  }
 }
 ol {
   padding: 0 0 0 20px;
@@ -424,7 +427,7 @@ ol {
       display: block;
     }
     .example {
-      padding: 10px 0 0 20px;
+      padding: 0px 0 10px 20px;
       color:#bb5050;
     }
     & > li {
@@ -578,4 +581,21 @@ a.anh {
     font-size: 14px;
     font-weight: normal;
   }
+}
+.list_l2 {
+  padding: 0 0 0 20px;
+  li {
+    --dx:40px;
+    padding: 0 0px 5px var(--dx);
+
+    text-indent: calc(var(--dx) * -1);
+  }
+}
+h5 {
+  font-size: 18px;
+  color: var(--darkBlue);
+  padding: 0 0 5px;
+}
+.darkBlue {
+  color: var(--darkBlue);
 }

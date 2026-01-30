@@ -1,0 +1,19 @@
+<blockquote class="quote-block">
+    <div class="cont">
+        <div class="ico"></div>
+        <div>
+            <p class="quote-text">"<%- title %>"</p>
+            <cite class="quote-author"><%- author_name %>
+                <%
+ if (typeof book_name !== "undefined" && book_name) {
+     %>
+<span>"<%- book_name%>"</span>
+                <%
+ }
+
+ %>
+
+            </cite>
+        </div>
+    </div>
+</blockquote>

@@ -1,3 +1,9 @@
 <div class="img_bl">
-    <img src="<%= url %>" alt="">
+    <%
+ const url_full = "/cont/"+ article.slug +"/"+ url
+ %>
+    <a href="<%= url_full %>">
+        <img src="<%= url_full %>" alt="">
+    </a>
+
 </div>

@@ -25,7 +25,10 @@
     <div class="cont">
 
         <div class="article-content">
-            <%- include(contentPartial) %>
+            <%- include(contentPartial,
+            {
+            article
+            }) %>
         </div>
 
         <% if (article.totalPages) { %>
