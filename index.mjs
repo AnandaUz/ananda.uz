@@ -75,6 +75,9 @@ app.get(["/texts/:slug", "/texts/:slug/:page"], (req, res) => {
 // маршрут для Telegram
 app.post("/api/bot", api);
 
+//bot ISeeWeight
+app.post("/api/bot_isee", api);
+
 
 
 app.listen(port, () => {
