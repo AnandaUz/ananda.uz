@@ -427,8 +427,21 @@ ol {
       display: block;
     }
     .example {
-      padding: 0px 0 10px 20px;
-      color:#bb5050;
+      color: #bb5050;
+      background: #fddbd157;
+      border-radius: 6px;
+      padding: 10px;
+      margin: 0 0 0 30px;
+      position: relative;
+      text-indent: 0;
+      &::before {
+        content: "пример";
+        position: absolute;
+        right: 6px;
+        top: 1px;
+        color: #bb505094;
+        font-size: 13px;
+      }
     }
     & > li {
       padding: 0 0 10px;

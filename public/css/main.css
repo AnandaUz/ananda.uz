@@ -7780,8 +7780,21 @@ ol.steps__list .title {
   display: block;
 }
 ol.steps__list .example {
-  padding: 0px 0 10px 20px;
   color: #bb5050;
+  background: rgba(253, 219, 209, 0.3411764706);
+  border-radius: 6px;
+  padding: 10px;
+  margin: 0 0 0 30px;
+  position: relative;
+  text-indent: 0;
+}
+ol.steps__list .example::before {
+  content: "пример";
+  position: absolute;
+  right: 6px;
+  top: 1px;
+  color: rgba(187, 80, 80, 0.5803921569);
+  font-size: 13px;
 }
 ol.steps__list > li {
   padding: 0 0 10px;
