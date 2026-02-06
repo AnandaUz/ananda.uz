@@ -62,7 +62,6 @@ app.get("/good", (req, res) => {
         centerPartial: "partials/center-good"
     });
 });
-
 app.get(["/texts/:slug", "/texts/:slug/:page"], (req, res) => {
     const article = articles.find(a => a.slug === req.params.slug);
     if (article) {
