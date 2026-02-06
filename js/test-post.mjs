@@ -1,6 +1,10 @@
 import fetch from "node-fetch"; // node 18+ встроен fetch
 
-const url = "http://localhost:3000/api/bot";
+
+console.log('тестовый запрос - начало')
+const url = "http://localhost:3000/api/bot_isee";
+
+/*
 const body = {
     message: {
         "update_id": 123456,
@@ -13,7 +17,32 @@ const body = {
             "entities": [{ "offset": 0, "length": 6, "type": "bot_command" }]
         }
     }
-
+};
+*/
+const body = {
+    message: {
+        "update_id": 268492456,
+        "message": {
+            "message_id": 61,
+            "from": {
+                "id": 117952884,
+                "is_bot": false,
+                "first_name": "Ananda",
+                "last_name": "Shadrin",
+                "username": "ananda_uz",
+                "language_code": "en"
+            },
+            "chat": {
+                "id": 117952884,
+                "first_name": "Ananda",
+                "last_name": "Shadrin",
+                "username": "ananda_uz",
+                "type": "private"
+            },
+            "date": 1770274804,
+            "text": "88.5"
+        }
+    }
 };
 
 (async () => {

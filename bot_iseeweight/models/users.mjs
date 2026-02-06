@@ -7,6 +7,7 @@ const userSchema = new mongoose.Schema({
     goal: Number,
     targetDate: Date,
     createdAt: { type: Date, default: Date.now }
+
 });
 
 export const User = mongoose.model('User', userSchema);

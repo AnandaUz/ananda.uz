@@ -19,6 +19,69 @@ bot.start(async (ctx) => {
     await ctx.reply('Как тебя зовут?');
 });
 
+async function addWeight(ctx, user = ctx.from) {
+    const text = ctx.message.text.trim();
+    //12.06.26 66.5 какой-то коментарий
+    /* 1. Регулярка:
+       - опциональная дата: DD.MM.YY
+       - обязательный вес: 66.5 или 66,5
+       - опциональный комментарий
+    */
+    const regex =
+        /^(?:(\d{2}\.\d{2}\.\d{2})\s+)?(\d+(?:[.,]\d+)?)\s*(.*)?$/;
+
+    const match = text.match(regex);
+    if (!match) {
+        await ctx.reply('Неверный формат. Пример: [12.06.26] 66.5 [комментарий]');
+        return;
+    }
+
+    /* 2. Дата */
+    let date;
+    if (match[1]) {
+        const [day, month, year] = match[1].split('.');
+        date = new Date(`20${year}-${month}-${day}`);
+    } else {
+        date = new Date(); // сегодня
+    }
+
+    /* 3. Вес */
+    const weight = Number(match[2].replace(',', '.'));
+    if (Number.isNaN(weight)) {
+        await ctx.reply('Не удалось распознать вес');
+        return;
+    }
+
+    /* 4. Комментарий */
+    const comment = match[3]?.trim() || '';
+
+    /* 5. Обновление или создание записи */
+    const dayStart = new Date(date);
+    dayStart.setHours(0, 0, 0, 0);
+
+    const dayEnd = new Date(date);
+    dayEnd.setHours(23, 59, 59, 999);
+
+    await WeightLog.findOneAndUpdate(
+        {
+            userId: user._id,
+            date: { $gte: dayStart, $lte: dayEnd }
+        },
+        {
+            weight,
+            comment,
+            date
+        },
+        {
+            upsert: true,
+            new: true
+        }
+    );
+
+    await ctx.reply('Вес сохранён');
+
+}
+
 /* Текстовые сообщения */
 bot.on('text', async (ctx) => {
     const telegramId = ctx.from.id;
@@ -65,19 +128,9 @@ bot.on('text', async (ctx) => {
     const user = await User.findOne({ telegramId });
     if (!user) return;
 
-    const match = text.match(/^([\d.]+)\s*(.*)?$/);
-    if (!match) return;
 
-    const weight = Number(match[1]);
-    const comment = match[2] || '';
 
-    await WeightLog.create({
-        userId: user._id,
-        weight,
-        comment
-    });
-
-    await ctx.reply('Вес сохранён');
+    addWeight(ctx,user)
 });
 
 export default bot;

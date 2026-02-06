@@ -10,12 +10,17 @@ const MONGO_URI =
     `@cluster0.vqcukp6.mongodb.net/${MONGODB_DB}?retryWrites=true&w=majority`;
 
 
+let isConnected = false;
+
 export async function connectDB() {
+    if (isConnected) {
+        return;
+    }
     try {
         await mongoose.connect(MONGO_URI);
+        isConnected = true;
         console.log('MongoDB connected');
     } catch (err) {
         console.error('MongoDB connection error:', err);
-        process.exit(1);
     }
 }
