@@ -13,6 +13,16 @@
         "contentPartial": "articles/shest_shagod_pro_raboti",
         "isTechnique": true
     },
+
+    {
+        "slug": "20_06_21_dach_retrit",
+        "title": "Дача-ретритик",
+        "date": "2020-06-21",
+        "contentPartial": "articles/20_06_21_dach_retrit",
+        "isArrticle": true,
+        "totalPages": 3
+    },
+
     {
         "slug": "18_09_08_retrit_issyk-kul",
         "title": "Йоговский ретрит на озере Иссык-Куль",
