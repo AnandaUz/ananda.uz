@@ -56,10 +56,10 @@ app.get("/coaching", (req, res) => {
     res.render("coaching", { title: "| Коучинг" });
 });
 
-app.get("/good", (req, res) => {
+app.get("/guide", (req, res) => {
     res.render("layout", { 
         title: "| Скачать файл",
-        centerPartial: "partials/center-good"
+        centerPartial: "partials/center-guide"
     });
 });
 app.get(["/texts/:slug", "/texts/:slug/:page"], (req, res) => {
