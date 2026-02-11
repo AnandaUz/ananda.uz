@@ -56,8 +56,8 @@ app.get("/coaching", (req, res) => {
     res.render("coaching", { title: "| Коучинг" });
 });
 
-app.get("/guide", (req, res) => {
-    res.render("layout", { 
+app.get(["/guide", "/file"], (req, res) => {
+    res.render("layout", {
         title: "| Скачать файл",
         centerPartial: "partials/center-guide"
     });
@@ -97,4 +97,3 @@ app.post("/api/bot", api);
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });
-
