@@ -11,7 +11,7 @@ import bodyParser from "body-parser";
 
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 2000;
 
 app.locals.formatDate = function (dateStr) {
     const [y, m, d] = dateStr.split('-');

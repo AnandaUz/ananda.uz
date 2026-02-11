@@ -15,14 +15,13 @@
     },
 
     {
-        "slug": "20_06_21_dach_retrit",
-        "title": "Дача-ретритик",
-        "date": "2020-06-21",
-        "contentPartial": "articles/20_06_21_dach_retrit",
+        "slug": "15_07_05_tashkent_samarkand_tashkent",
+        "title": "Велопоездка Ташкент–Самарканд–Ташкент (612 км)",
+        "date": "2015-07-05",
+        "contentPartial": "articles/15_07_05_tashkent_samarkand_tashkent",
         "isArrticle": true,
-        "totalPages": 3
+        "totalPages": 5
     },
-
     {
         "slug": "18_09_08_retrit_issyk-kul",
         "title": "Йоговский ретрит на озере Иссык-Куль",
@@ -32,12 +31,12 @@
         "totalPages": 7
     },
     {
-        "slug": "15_07_05_tashkent_samarkand_tashkent",
-        "title": "Велопоездка Ташкент–Самарканд–Ташкент (612 км)",
-        "date": "2015-07-05",
-        "contentPartial": "articles/15_07_05_tashkent_samarkand_tashkent",
+        "slug": "20_06_21_dach_retrit",
+        "title": "Дача-ретритик",
+        "date": "2020-06-21",
+        "contentPartial": "articles/20_06_21_dach_retrit",
         "isArrticle": true,
-        "totalPages": 5
+        "totalPages": 3
     },
     {
         "slug": "19_01_15_inogda_ya_risuyu",
