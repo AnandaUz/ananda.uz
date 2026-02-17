@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin - Cookie Control</title>
+</head>
+<body>
+    <h1>Управление куки isdebag</h1>
+    
+    <div>
+        Текущий статус: <span id="status">неизвестно</span>
+    </div>
+    
+    <button id="toggleBtn" style="margin-top: 20px; padding: 10px;">Переключить isdebag</button>
+
+    <script>
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+            return null;
+        }
+
+        function setCookie(name, value, days) {
+            let expires = "";
+            if (days) {
+                const date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name + "=" + (value || "") + expires + "; path=/";
+        }
+
+        function deleteCookie(name) {
+            document.cookie = name + '=; Max-Age=-99999999; path=/';
+        }
+
+        function updateStatus() {
+            const isDebag = getCookie('isdebag');
+            const statusEl = document.getElementById('status');
+            if (isDebag === 'true') {
+                statusEl.textContent = 'Установлен (true)';
+                statusEl.style.color = 'green';
+            } else {
+                statusEl.textContent = 'Не установлен';
+                statusEl.style.color = 'red';
+            }
+        }
+
+        document.getElementById('toggleBtn').addEventListener('click', function() {
+            const isDebag = getCookie('isdebag');
+            if (isDebag === 'true') {
+                deleteCookie('isdebag');
+            } else {
+                setCookie('isdebag', 'true', 7); // Установим на 7 дней
+            }
+            updateStatus();
+        });
+
+        // Инициализация при загрузке
+        updateStatus();
+    </script>
+</body>
+</html>

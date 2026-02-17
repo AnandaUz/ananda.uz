@@ -52,6 +52,9 @@ app.get("/", (req, res) => {
 app.get("/mastermind", (req, res) => {
     res.render("mastermind", { title: "| Мастермайнд" });
 });
+app.get("/admin", (req, res) => {
+    res.render("admin");
+});
 app.get("/coaching", (req, res) => {
     res.render("coaching", { title: "| Коучинг" });
 });

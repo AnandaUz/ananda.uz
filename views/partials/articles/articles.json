@@ -31,6 +31,14 @@
         "totalPages": 7
     },
     {
+        "slug": "19_08_18_gori_retrit",
+        "title": "Первый мною организованный ретрит",
+        "date": "2019-08-18",
+        "contentPartial": "articles/19_08_18_gori_retrit",
+        "isArrticle": true,
+        "totalPages": 3
+    },
+    {
         "slug": "20_06_21_dach_retrit",
         "title": "Дача-ретритик",
         "date": "2020-06-21",
