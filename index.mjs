@@ -58,6 +58,9 @@ app.get("/admin", (req, res) => {
 app.get("/coaching", (req, res) => {
     res.render("coaching", { title: "| Коучинг" });
 });
+app.get("/privacy-policy", (req, res) => {
+    res.render("privacy-policy", { title: "| Коучинг" });
+});
 
 app.get(["/guide", "/file"], (req, res) => {
     res.render("layout", {
