@@ -7473,6 +7473,10 @@ img {
   margin: -105px 0 0;
 }
 
+main .container {
+  padding: 0 0 30px;
+}
+
 .cont {
   padding: 0 20px 5px;
 }
@@ -7499,7 +7503,7 @@ img {
 .b01 span {
   display: block;
   text-indent: -40px;
-  padding: 0 200px 7px 0;
+  padding: 0 150px 7px 0;
 }
 @media (min-width: 768px) {
   .b01 span {
@@ -7639,6 +7643,7 @@ footer a.anh span {
 .bA.ex1 {
   line-height: 20px;
   margin-top: 8px;
+  height: 44px;
 }
 .bA.ex1 span {
   font-size: 16px;
@@ -7979,6 +7984,37 @@ h5 {
 
 .policy_page {
   padding: 30px;
+}
+
+.add-list {
+  padding: 20px 0 10px;
+  text-align: center;
+}
+.add-list .title {
+  font-size: 18px;
+  color: var(--darkBlue);
+  margin: 0 30px 5px;
+  border-bottom: 1px solid #e5b6a4;
+}
+.add-list .anh_bl a {
+  display: block;
+  font-size: 19px;
+  padding: 5px 0;
+}
+.add-list .al_center {
+  padding: 20px 0 0;
+}
+
+a.MM {
+  background: rgba(255, 68, 0, 0.75);
+  color: rgba(255, 255, 255, 0.9333333333);
+  font-size: 16px;
+  padding: 4px 7px;
+  transition: background 0.2s ease;
+  max-width: 375px;
+  box-sizing: content-box;
+  line-height: 34px;
+  border-radius: 5px;
 }
 
 /*# sourceMappingURL=main.css.map */
