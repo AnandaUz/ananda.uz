@@ -27,9 +27,11 @@ bot.start((ctx) => {
 
     } else if (args === "coaching") {
         str = 'на КОУЧ-СЕССИЮ'
+    } else if (args === "meet") {
+        str = 'на бесплатную встречу'
     }
 
-    clientMsg = `✅ Ваша заявка ${str} отправлена!`;
+    clientMsg = `✅ Ваша заявка ${str} отправлена! В самое ближайшее время я (Ананда @ananda_uz) отвечу вам в личном сообщении`;
 
 
     let url = ''
