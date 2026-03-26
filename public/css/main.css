@@ -7472,6 +7472,58 @@ img {
 .main .cont {
   margin: -105px 0 0;
 }
+.main.meet .top {
+  background-position: right -180px top -44px;
+  margin: 0 0 -145px;
+  height: 290px;
+}
+.main.meet .name {
+  top: 71px;
+  height: 26px;
+  font-size: 18px;
+  right: auto;
+}
+.main.meet .cont {
+  margin: 0;
+  position: relative;
+}
+.main.meet h1, .main.meet h2 {
+  background: rgba(255, 68, 0, 0.7);
+  margin: 0;
+  color: #fff;
+  padding: 8px 0;
+  font-weight: normal;
+  text-align: center;
+}
+.main.meet h1:before, .main.meet h2:before {
+  display: none;
+}
+@media (min-width: 768px) {
+  .main.meet h1, .main.meet h2 {
+    background: none;
+    color: rgba(255, 68, 0, 0.75);
+  }
+}
+.main.meet h2 {
+  font-size: 22px;
+  padding: 0 2px 10px;
+  position: relative;
+  margin: 0 0 10px;
+}
+.main.meet .bl-00 {
+  font-size: 20px;
+  margin: 10px 0px;
+  line-height: 1.1;
+}
+.main.meet .bl-00 p {
+  margin: 18px 0;
+}
+.main.meet .list-p p:before {
+  content: "🔸";
+}
+.main.meet .list-p2 p:before {
+  content: "🔹";
+}
 
 main .container {
   padding: 0 0 30px;
@@ -8015,6 +8067,18 @@ a.MM {
   box-sizing: content-box;
   line-height: 34px;
   border-radius: 5px;
+}
+
+.btn-meet {
+  margin: 5px 0;
+  padding: 8px 15px;
+  display: inline-grid;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.3333333333);
+  background: url("../images/btn-bg-t.svg") center top repeat-x, url("../images/btn-bg-b.svg") center bottom repeat-x, #0070f3;
+}
+.btn-meet span {
+  font-size: 17px;
+  color: rgba(255, 255, 255, 0.8);
 }
 
 /*# sourceMappingURL=main.css.map */

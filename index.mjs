@@ -68,6 +68,12 @@ app.get(["/guide", "/file"], (req, res) => {
         centerPartial: "partials/center-guide"
     });
 });
+app.get(["/meet"], (req, res) => {
+    res.render("layout", {
+        title: "| Встреча",
+        centerPartial: "partials/center-meet"
+    });
+});
 app.get(["/texts/:slug", "/texts/:slug/:page"], (req, res) => {
     const article = articles.find(a => a.slug === req.params.slug);
     if (article) {
