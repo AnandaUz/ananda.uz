@@ -94,7 +94,7 @@ app.get(["/meet"], async (req, res) => {
         .replace(/(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}).*/, '$3.$2.$1 $4:$5');
 
     // Формируем "радующую" сводку
-    const message = `${dateStr} ${isMobile} 🔸 ${language} 🔸 ${browserName} 🔸 ${referer} 🔸 ${utmString}`;
+    const message = `${dateStr} ${isMobile} ${language} 🔸 ${browserName} 🔸 ${referer} 🔸 ${utmString}`;
 
     await sendMessageToAdmin(message);
 
