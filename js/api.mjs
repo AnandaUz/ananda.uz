@@ -83,7 +83,13 @@ export default async function handler(req, res) {
 
 export async function sendMessageToAdmin(message) {
     try {
-        await bot.telegram.sendMessage(process.env.ADMIN_ID, message, { parse_mode: 'HTML' });
+        await bot.telegram.sendMessage(process.env.ADMIN_ID, message,
+            {
+                parse_mode: 'HTML',
+                link_preview_options: {
+                    is_disabled: true
+                }
+            });
         return { success: true };
     } catch (error) {
         console.error("Error sending message to admin:", error);
