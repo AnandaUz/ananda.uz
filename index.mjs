@@ -84,7 +84,7 @@ app.get(["/meet"], async (req, res) => {
     const ua = req.headers['user-agent'];
     const { browser, version, os } = parseUserAgent(ua);
 
-    const browserName = `${browser}-${version} ${os}`
+    const browserName = `${browser}${ (version !== '')?('-'+version):''} ${os}`
 
 
     const now = new Date();
@@ -95,12 +95,17 @@ app.get(["/meet"], async (req, res) => {
 
     const { utm_source, utm_medium, utm_campaign, utm_content, utm_term, fbclid } = req.query;
 
-// Собираем основные метки
-    const utmParts = [utm_source, utm_medium, utm_campaign, utm_content, utm_term].filter(Boolean);
-    const utmString = utmParts.join(" 🔅 ");
+// Собираем все метки в массив, фильтруем пустые
+    const rawParts = [utm_source, utm_medium, utm_campaign, utm_content, utm_term];
+    const filteredParts = rawParts.filter(Boolean);
+
+// Магия: Set убирает дубликаты, если значения одинаковые
+    const uniqueParts = [...new Set(filteredParts)];
+
+    const utmString = uniqueParts.join(" 🔅 ");
 
 // Добавляем fbclid, если он есть, для отслеживания уникальности
-    const fbInfo = fbclid ? `🆔 ${fbclid.slice(0, 8)}...` : "";
+    const fbInfo = fbclid ? `🆔 ${fbclid}` : "";
 
 // Формируем финальный блок для маркетинга
     let marketingInfo = "";
@@ -192,7 +197,7 @@ function parseUserAgent(ua) {
     ];
 
     // Определяем браузер (порядок важен — Edge/Opera идут до Chrome)
-    let browser = 'Unknown', version = 'Unknown';
+    let browser = '', version = '';
     for (const b of browsers) {
         const match = ua.match(b.regex);
         if (match) {
@@ -203,7 +208,7 @@ function parseUserAgent(ua) {
     }
 
     // Определяем ОС
-    let detectedOS = 'Unknown';
+    let detectedOS = '';
     for (const o of os) {
         const match = ua.match(o.regex);
         if (match) {
