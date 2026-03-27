@@ -81,20 +81,34 @@ app.get(["/meet"], async (req, res) => {
 
     const referer = req.headers['referer'] || "🌸";
 
-    const browserName = userAgent.split(') ')[1]?.split(' ')[0] || "Видит ваш сайт"
-    const { utm_source, utm_medium, utm_campaign, utm_content, utm_term } = req.query;
+    const ua = req.headers['user-agent'];
+    const { browser, version, os } = parseUserAgent(ua);
 
-    const utmString = [utm_source, utm_medium, utm_campaign, utm_content, utm_term]
-        .filter(value => value) // Убираем пустые значения
-        .join(" 🔅 ");
+    const browserName = `${browser}-${version} ${os}`
+
 
     const now = new Date();
     const tashkentTime = new Date(now.getTime() + (5 * 60 * 60 * 1000)); // +5 часов
     const dateStr = tashkentTime.toISOString()
         .replace(/(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}).*/, '$3.$2.$1 $4:$5');
 
+
+    const { utm_source, utm_medium, utm_campaign, utm_content, utm_term, fbclid } = req.query;
+
+// Собираем основные метки
+    const utmParts = [utm_source, utm_medium, utm_campaign, utm_content, utm_term].filter(Boolean);
+    const utmString = utmParts.join(" 🔅 ");
+
+// Добавляем fbclid, если он есть, для отслеживания уникальности
+    const fbInfo = fbclid ? `🆔 ${fbclid.slice(0, 8)}...` : "";
+
+// Формируем финальный блок для маркетинга
+    let marketingInfo = "";
+    if (utmString || fbInfo) {
+        marketingInfo = `\n🎯  ${utmString || "Без UTM"}${fbInfo ? `\n${fbInfo}` : ""}`;
+    }
     // Формируем "радующую" сводку
-    const message = `${dateStr} ${isMobile} ${language} 🔸 ${browserName} 🔸 ${referer} 🔸 ${utmString}`;
+    const message = `${dateStr} ${isMobile} ${language} 🔸 ${browserName} 🔸 ${referer} ${marketingInfo}`;
 
     await sendMessageToAdmin(message);
 
@@ -150,7 +164,61 @@ app.post("/api/submit-form", async (req, res) => {
 //+bot ISeeWeight
 
 
+function parseUserAgent(ua) {
+    if (!ua) return { browser: 'Unknown', version: 'Unknown', os: 'Unknown' };
 
+    const browsers = [
+        { name: 'Edge',            regex: /Edg\/([0-9.]+)/ },
+        { name: 'Opera',           regex: /OPR\/([0-9.]+)/ },
+        { name: 'Opera Legacy',    regex: /Opera\/([0-9.]+)/ },
+        { name: 'Yandex Browser',  regex: /YaBrowser\/([0-9.]+)/ },
+        { name: 'Samsung Browser', regex: /SamsungBrowser\/([0-9.]+)/ },
+        { name: 'UC Browser',      regex: /UCBrowser\/([0-9.]+)/ },
+        { name: 'Firefox',         regex: /Firefox\/([0-9.]+)/ },
+        { name: 'Chrome',          regex: /Chrome\/([0-9.]+)/ },
+        { name: 'Safari',          regex: /Version\/([0-9.]+).*Safari/ },
+    ];
+
+    const os = [
+        { name: 'Windows 11/10', regex: /Windows NT 10\.0/ },
+        { name: 'Windows 8.1',   regex: /Windows NT 6\.3/ },
+        { name: 'Windows 8',     regex: /Windows NT 6\.2/ },
+        { name: 'Windows 7',     regex: /Windows NT 6\.1/ },
+        { name: 'macOS',         regex: /Mac OS X ([0-9_]+)/ },
+        { name: 'iPhone (iOS)',  regex: /iPhone OS ([0-9_]+)/ },
+        { name: 'iPad (iOS)',    regex: /iPad.*OS ([0-9_]+)/ },
+        { name: 'Android',       regex: /Android ([0-9.]+)/ },
+        { name: 'Linux',         regex: /Linux/ },
+    ];
+
+    // Определяем браузер (порядок важен — Edge/Opera идут до Chrome)
+    let browser = 'Unknown', version = 'Unknown';
+    for (const b of browsers) {
+        const match = ua.match(b.regex);
+        if (match) {
+            browser = b.name;
+            version = match[1].split('.')[0]; // только мажорная версия
+            break;
+        }
+    }
+
+    // Определяем ОС
+    let detectedOS = 'Unknown';
+    for (const o of os) {
+        const match = ua.match(o.regex);
+        if (match) {
+            detectedOS = o.name;
+            // Для macOS/iOS заменяем _ на . в версии
+            if (match[1]) {
+                const osVersion = match[1].replace(/_/g, '.');
+                detectedOS += ` ${osVersion}`;
+            }
+            break;
+        }
+    }
+
+    return { browser, version, os: detectedOS };
+}
 
 //-bot ISeeWeight
 app.listen(port, () => {
