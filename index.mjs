@@ -68,7 +68,36 @@ app.get(["/guide", "/file"], (req, res) => {
         centerPartial: "partials/center-guide"
     });
 });
-app.get(["/meet"], (req, res) => {
+app.get(["/meet"], async (req, res) => {
+    // 1. Собираем данные из запроса
+    const userAgent = req.headers['user-agent'] || "Unknown device";
+    const isMobile = /Mobile|Android|iPhone/i.test(userAgent) ? "📱" : "💻";
+
+    // 2. Достаем язык (поможет понять, откуда примерно человек)
+    const language = req.headers['accept-language']?.split(',')[0] || "Не определен";
+
+    // 3. Вытаскиваем UTM-метку (если ты добавил их в рекламе)
+    // Например: esho.uz/meet?utm_content=silavoli
+
+    const referer = req.headers['referer'] || "🌸";
+
+    const browserName = userAgent.split(') ')[1]?.split(' ')[0] || "Видит ваш сайт"
+    const { utm_source, utm_medium, utm_campaign, utm_content, utm_term } = req.query;
+
+    const utmString = [utm_source, utm_medium, utm_campaign, utm_content, utm_term]
+        .filter(value => value) // Убираем пустые значения
+        .join(" 🔅 ");
+
+    const now = new Date();
+    const tashkentTime = new Date(now.getTime() + (5 * 60 * 60 * 1000)); // +5 часов
+    const dateStr = tashkentTime.toISOString()
+        .replace(/(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}).*/, '$3.$2.$1 $4:$5');
+
+    // Формируем "радующую" сводку
+    const message = `${dateStr} ${isMobile} 🔸 ${language} 🔸 ${browserName} 🔸 ${referer} 🔸 ${utmString}`;
+
+    await sendMessageToAdmin(message);
+
     res.render("layout", {
         title: "| Встреча",
         centerPartial: "partials/center-meet"
