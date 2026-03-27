@@ -136,7 +136,7 @@ app.post("/api/submit-form", async (req, res) => {
         return res.status(400).json({ success: false, error: "Missing fields" });
     }
 
-    const message = `📩 <b>Новая заявка с сайта (Встреча)</b>\n\n👤 Имя: ${userName}\n📞 Контакт: ${userContact}`;
+    const message = `📩 <b>Новая заявка с сайта (Встреча)</b>\n\nИмя: ${userName}\nКонтакт: ${userContact}`;
     
     const result = await sendMessageToAdmin(message);
     
