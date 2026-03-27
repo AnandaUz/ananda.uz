@@ -80,3 +80,13 @@ export default async function handler(req, res) {
         return res.status(500).json({ ok: false, error: err.message });
     }
 }
+
+export async function sendMessageToAdmin(message) {
+    try {
+        await bot.telegram.sendMessage(process.env.ADMIN_ID, message, { parse_mode: 'HTML' });
+        return { success: true };
+    } catch (error) {
+        console.error("Error sending message to admin:", error);
+        return { success: false, error: error.message };
+    }
+}

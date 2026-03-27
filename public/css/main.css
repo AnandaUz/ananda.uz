@@ -7407,6 +7407,10 @@ body {
   margin: 0;
 }
 
+button {
+  font-family: "Montserrat", sans-serif;
+}
+
 /* Контейнер для центровки */
 .container {
   width: 100%;
@@ -7474,7 +7478,7 @@ img {
 }
 .main.meet .top {
   background-position: right -180px top -44px;
-  margin: 0 0 -145px;
+  margin: 0 0 -165px;
   height: 290px;
 }
 .main.meet .name {
@@ -7482,6 +7486,8 @@ img {
   height: 26px;
   font-size: 18px;
   right: auto;
+  left: -5px;
+  padding: 4px 8px 4px 13px;
 }
 .main.meet .cont {
   margin: 0;
@@ -7511,12 +7517,11 @@ img {
   margin: 0 0 10px;
 }
 .main.meet .bl-00 {
-  font-size: 20px;
-  margin: 10px 0px;
+  margin: 5px 0px;
   line-height: 1.1;
 }
 .main.meet .bl-00 p {
-  margin: 18px 0;
+  margin: 12px 0;
 }
 .main.meet .list-p p:before {
   content: "🔸";
@@ -8074,11 +8079,64 @@ a.MM {
   padding: 8px 15px;
   display: inline-grid;
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.3333333333);
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.9);
   background: url("../images/btn-bg-t.svg") center top repeat-x, url("../images/btn-bg-b.svg") center bottom repeat-x, #0070f3;
 }
 .btn-meet span {
   font-size: 17px;
   color: rgba(255, 255, 255, 0.8);
+}
+
+.form-meet {
+  padding: 15px 15px 6px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 2px 12px rgba(0, 100, 100, 0.3333333333);
+  max-width: 440px;
+  margin: 10px auto;
+  background: url("../images/btn-bg-t.svg") center top repeat-x, url("../images/btn-bg-b.svg") center bottom repeat-x, #f4fcff;
+}
+.form-meet .bottom-text {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.45);
+  text-align: center;
+}
+.form-meet .bottom-text {
+  color: #999494;
+  padding: 5px 0 0;
+}
+.form-meet form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+.form-meet form input {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-family: inherit;
+  font-size: 16px;
+  outline: none;
+}
+.form-meet form input:focus {
+  border-color: #333;
+}
+.form-meet form .btn-meet {
+  cursor: pointer;
+  border: none;
+  width: 100%;
+  display: block;
+  margin: 0;
+}
+.form-meet #formMessage {
+  font-size: 18px;
+  padding: 10px;
+  display: none;
+  font-weight: bold;
+  color: #28a745;
 }
 
 /*# sourceMappingURL=main.css.map */

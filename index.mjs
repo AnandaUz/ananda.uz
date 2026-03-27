@@ -3,7 +3,7 @@ import express from "express";
 import path from "path";
 import fs from "fs";
 import { fileURLToPath } from "url";
-import  api  from "./js/api.mjs";
+import  api, { sendMessageToAdmin }  from "./js/api.mjs";
 
 import bodyParser from "body-parser";
 
@@ -99,6 +99,24 @@ app.get(["/texts/:slug", "/texts/:slug/:page"], (req, res) => {
 
 // маршрут для Telegram
 app.post("/api/bot", api);
+
+app.post("/api/submit-form", async (req, res) => {
+    const { userName, userContact } = req.body;
+    
+    if (!userName || !userContact) {
+        return res.status(400).json({ success: false, error: "Missing fields" });
+    }
+
+    const message = `📩 <b>Новая заявка с сайта (Встреча)</b>\n\n👤 Имя: ${userName}\n📞 Контакт: ${userContact}`;
+    
+    const result = await sendMessageToAdmin(message);
+    
+    if (result.success) {
+        res.json({ success: true });
+    } else {
+        res.status(500).json({ success: false, error: result.error });
+    }
+});
 
 //+bot ISeeWeight
 
