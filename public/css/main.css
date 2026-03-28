@@ -7511,16 +7511,20 @@ img {
   }
 }
 .main.meet h2 {
-  font-size: 22px;
-  padding: 0 2px 10px;
+  font-size: 19px;
+  padding: 0 7px 10px;
   position: relative;
   margin: 0 0 10px;
+  line-height: 1;
 }
 .main.meet .bl-00 {
   margin: 5px 0px;
   line-height: 1.1;
 }
 .main.meet .bl-00 p {
+  color: #cb2613;
+}
+.main.meet .bl-00 p.title {
   margin: 12px 0;
 }
 .main.meet .list-p p:before {
@@ -8103,18 +8107,18 @@ a.MM {
   text-align: center;
 }
 .form-meet .bottom-text {
-  color: #999494;
+  color: #008329;
   padding: 5px 0 0;
 }
 .form-meet form {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 6px;
   max-width: 400px;
   margin: 0 auto;
 }
 .form-meet form input {
-  padding: 12px 15px;
+  padding: 9px 15px;
   border: 1px solid #ddd;
   border-radius: 5px;
   font-family: inherit;
