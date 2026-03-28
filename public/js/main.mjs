@@ -67,7 +67,6 @@ function sendTrackingEvent(eventName) {
 
     params.client_referer = document.referrer || "Прямой заход";
     params.event_name = eventName;
-
     fetch('/api/track-visit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
