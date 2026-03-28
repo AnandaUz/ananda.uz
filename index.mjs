@@ -117,7 +117,8 @@ app.get(["/meet"], async (req, res) => {
         const dateStr = tashkentTime.toISOString()
             .replace(/(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}).*/, '$3.$2.$1 $4:$5');
 
-        const rawParts = [utm_source, utm_medium, utm_campaign, utm_content, utm_term, key1];
+        // const rawParts = [utm_source, utm_medium, utm_campaign, utm_content, utm_term, key1];
+        const rawParts = [ utm_campaign, key1];
         const filteredParts = rawParts.filter(Boolean);
 
         const uniqueParts = [...new Set(filteredParts)];
