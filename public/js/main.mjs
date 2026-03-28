@@ -40,7 +40,51 @@ window.addEventListener("load", e => {
             }
         });
     }
+    {
+        // Ждем 1 секунду после полной загрузки
+        setTimeout(function() {
+            // Собираем все параметры из URL (UTM, fbclid, key1 и т.д.)
+            const urlParams = new URLSearchParams(window.location.search);
+            const params = Object.fromEntries(urlParams.entries());
+
+            // Добавляем инфо о реферере, так как сервер иногда его теряет
+            params.client_referer = document.referrer || "Прямой заход";
+
+            params.event_name = "1 секунда";
+
+            // Отправляем на наш новый эндпоинт
+            fetch('/api/track-visit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(params)
+            }).catch(err => console.log('Tracking error:', err));
+        }, 1000);
+        // Ждем 1 секунду после полной загрузки
+        setTimeout(function() {
+            // Собираем все параметры из URL (UTM, fbclid, key1 и т.д.)
+            const urlParams = new URLSearchParams(window.location.search);
+            const params = Object.fromEntries(urlParams.entries());
+
+            // Добавляем инфо о реферере, так как сервер иногда его теряет
+            params.client_referer = document.referrer || "Прямой заход";
+
+            params.event_name = "10 секунд";
+
+            // Отправляем на наш новый эндпоинт
+            fetch('/api/track-visit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(params)
+            }).catch(err => console.log('Tracking error:', err));
+        }, 10000);
+    }
 });
+
+
 
 
 

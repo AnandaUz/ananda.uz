@@ -144,6 +144,23 @@ app.get(["/meet"], async (req, res) => {
         centerPartial: "partials/center-meet"
     });
 });
+app.post("/api/track-visit", async (req, res) => {
+    try {
+        const data = req.body; // Данные придут из fetch
+        const { fbclid, event_name } = data;
+
+        const fbInfo = fbclid ? `${fbclid.slice(-6)}` : "кто-то";
+
+        const message = `${fbInfo} 🔅 ${event_name}`;
+
+        await sendMessageToAdmin(message);
+
+        res.json({ status: 'ok' });
+    } catch (e) {
+        console.error(e);
+        res.status(500).json({ status: 'error' });
+    }
+});
 app.get(["/texts/:slug", "/texts/:slug/:page"], (req, res) => {
     const article = articles.find(a => a.slug === req.params.slug);
     if (article) {
