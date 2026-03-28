@@ -41,49 +41,38 @@ window.addEventListener("load", e => {
         });
     }
     {
-        // Ждем 1 секунду после полной загрузки
-        setTimeout(function() {
-            // Собираем все параметры из URL (UTM, fbclid, key1 и т.д.)
-            const urlParams = new URLSearchParams(window.location.search);
-            const params = Object.fromEntries(urlParams.entries());
+        const timers = [
+            { ms: 1000,  label: "1с" },
+            { ms: 3000, label: "3с" },
+            { ms: 5000, label: "5с" },
+            { ms: 10000, label: "10с" }
+        ];
+        // 3. Запускаем циклом
+        timers.forEach(timer => {
+            setTimeout(() => sendTrackingEvent(timer.label), timer.ms);
+        });
 
-            // Добавляем инфо о реферере, так как сервер иногда его теряет
-            params.client_referer = document.referrer || "Прямой заход";
-
-            params.event_name = "1 секунда";
-
-            // Отправляем на наш новый эндпоинт
-            fetch('/api/track-visit', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(params)
-            }).catch(err => console.log('Tracking error:', err));
-        }, 1000);
-        // Ждем 1 секунду после полной загрузки
-        setTimeout(function() {
-            // Собираем все параметры из URL (UTM, fbclid, key1 и т.д.)
-            const urlParams = new URLSearchParams(window.location.search);
-            const params = Object.fromEntries(urlParams.entries());
-
-            // Добавляем инфо о реферере, так как сервер иногда его теряет
-            params.client_referer = document.referrer || "Прямой заход";
-
-            params.event_name = "10 секунд";
-
-            // Отправляем на наш новый эндпоинт
-            fetch('/api/track-visit', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(params)
-            }).catch(err => console.log('Tracking error:', err));
-        }, 10000);
+        let scrollSent = false;
+        window.addEventListener('scroll', function() {
+            if (scrollSent) return; // Если уже отправили, выходим
+            scrollSent = true;
+            sendTrackingEvent("scroll");
+        });
     }
 });
+function sendTrackingEvent(eventName) {
+    const urlParams = new URLSearchParams(window.location.search);
+    const params = Object.fromEntries(urlParams.entries());
 
+    params.client_referer = document.referrer || "Прямой заход";
+    params.event_name = eventName;
+
+    fetch('/api/track-visit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(params)
+    }).catch(err => console.log('Tracking error:', err));
+}
 
 
 
