@@ -105,7 +105,7 @@ app.get(["/meet"], async (req, res) => {
     const utmString = uniqueParts.join(" 🔅 ");
 
 // Добавляем fbclid, если он есть, для отслеживания уникальности
-    const fbInfo = fbclid ? `🆔 ${fbclid}` : "";
+    const fbInfo = fbclid ? ` ${fbclid.slice(-6)}` : "";
 
 // Формируем финальный блок для маркетинга
     let marketingInfo = "";
