@@ -147,11 +147,11 @@ app.get(["/meet"], async (req, res) => {
 app.post("/api/track-visit", async (req, res) => {
     try {
         const data = req.body; // Данные придут из fetch
-        const { fbclid, event_name } = data;
+        const { fbclid, event_name, page_path } = data;
 
         const fbInfo = fbclid ? `${fbclid.slice(-6)}` : "кто-то";
 
-        const message = `${fbInfo} 🔅 ${event_name}`;
+        const message = `${fbInfo} 🔅 ${event_name} 🔅 ${page_path}`;
 
         await sendMessageToAdmin(message);
 

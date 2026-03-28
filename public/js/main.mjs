@@ -66,6 +66,7 @@ function sendTrackingEvent(eventName) {
     const params = Object.fromEntries(urlParams.entries());
 
     params.client_referer = document.referrer || "Прямой заход";
+    params.page_path = window.location.pathname;
     params.event_name = eventName;
     fetch('/api/track-visit', {
         method: 'POST',
