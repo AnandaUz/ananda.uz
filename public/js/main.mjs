@@ -46,7 +46,8 @@ window.addEventListener("load", e => {
             { ms: 3000, label: "3с" },
             { ms: 5000, label: "5с" },
             { ms: 10000, label: "10с" },
-            { ms: 30000, label: "130с" }
+            { ms: 30000, label: "30с" },
+            { ms: 50000, label: "50с" }
         ];
         // 3. Запускаем циклом
         timers.forEach(timer => {
